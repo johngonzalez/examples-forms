@@ -1,0 +1,40 @@
+<head>
+  <title>examples-forms</title>
+</head>
+
+<body>
+  {{> questionSubmit}}
+</body>
+
+<template name="questionSubmit">
+  {{#basicFormBlock schema=schema action=action}}
+    <!-- {{#each prequestions}} -->
+      <!-- {{> basicInput2 field='question'}} -->
+      {{> inputElement field="answers"}}
+    <!-- {{/each}} -->
+  {{/basicFormBlock}}
+</template>
+
+<!-- <template name="basicRadio">
+  <input name="{{field}}" type="radio" class="reactive-element">
+  {{#if submitted}}
+    {{#if errorMessage}}<p class="error-message">{{errorMessage}}</p>{{/if}}
+  {{/if}}
+</template> -->
+
+<template name="inputElement">
+  <div class="reactive-element">
+    {{#each numberOfFields}}
+      {{> basicInput2 field="answers.ans"}}
+    {{/each}}
+  </div>
+  <button class="add-field">Add another field</button>
+</template>
+
+<template name="basicInput2">
+  {{!-- The form elements in these components need to have the reactive-element class --}}
+  <input placeholder="{{instructions}}" class="reactive-element" value={{value}}>
+  {{#if submitted}}
+    {{#if errorMessage}}<p class="error-message">{{errorMessage}}</p>{{/if}}
+  {{/if}}
+</template>
